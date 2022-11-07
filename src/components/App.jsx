@@ -8,8 +8,8 @@ export const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeitral] = useState(0);
   const [bad, setBad] = useState(0);
-  const totalQuantityFeedback = good + neutral + bad;
   const feedbackTypes = ['good', 'neutral', 'bad'];
+  function totalQuantityFeedback(){return (good + neutral + bad)};
 
   // state = {
   //   good: 0,
@@ -28,8 +28,7 @@ export const App = () => {
         break;
       case 'bad':
         setBad(prevState =>prevState + 1);
-        break;default:console.log('something wrong');
-        return;
+        break;default:
     }
   };
 
@@ -39,7 +38,7 @@ export const App = () => {
   // }
 
   const countPositiveFeedbackPercentage = () => {
-    return ((good * 100) / totalQuantityFeedback).toFixed();
+    return ((good * 100) / totalQuantityFeedback()).toFixed();
   };
 
   return (
@@ -52,12 +51,12 @@ export const App = () => {
       </Section>
 
       <Section title="Statistics">
-        {countPositiveFeedbackPercentage() > 0 ? (
+        {totalQuantityFeedback() > 0 ? (
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
-            total={countPositiveFeedbackPercentage()}
+            total={totalQuantityFeedback()}
             positivePercentage={countPositiveFeedbackPercentage()}
           ></Statistics>
         ) : (
