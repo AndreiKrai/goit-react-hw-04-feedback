@@ -28,7 +28,8 @@ export const App = () => {
         break;
       case 'bad':
         setBad(prevState =>prevState + 1);
-        break;
+        break;default:console.log('something wrong');
+        return;
     }
   };
 
